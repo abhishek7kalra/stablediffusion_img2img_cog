@@ -1,0 +1,11 @@
+build:
+  gpu: false
+  python_version: "3.11"
+  python_packages:
+    - "diffusers"
+    - "torch"
+    - "ftfy"
+    - "transformers"
+    - "accelerate"
+
+predict: "vangogh2.py:Predictor"

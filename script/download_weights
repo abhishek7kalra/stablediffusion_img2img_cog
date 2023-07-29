@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+import os
+from diffusers import StableDiffusionImg2ImgPipeline
+
+
+model_id = "runwayml/stable-diffusion-v1-5"
+MODEL_CACHE = "diffusers-cache"
+
+os.makedirs(MODEL_CACHE, exist_ok=True)
+
+pipe = StableDiffusionImg2ImgPipeline.from_pretrained(
+    model_id,
+    cache_dir=MODEL_CACHE,
+)
