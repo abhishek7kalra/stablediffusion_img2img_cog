@@ -1,7 +1,8 @@
 __pycache__
 *.py[cod]
 *$py.class
-
+diffusers-cache/
+.cog/
 # Distribution / packaging 
 .Python build/ 
 develop-eggs/ 

@@ -8,15 +8,6 @@ import os
 import random
 
 
-######checking
-if torch.backends.mps.is_available():
-    mps_device = torch.device("mps")
-    x = torch.ones(1, device=mps_device)
-    print (x)
-else:
-    print ("MPS device not found.")
-
-
 MODEL_ID = "runwayml/stable-diffusion-v1-5"
 MODEL_CACHE = "diffusers-cache"
 
@@ -29,10 +20,8 @@ class Predictor(BasePredictor):
             #float16
             cache_dir=MODEL_CACHE,
             local_files_only=True,
-        )
-        # .to("mps")
-        #remove mps and add cuda
-        # .to("cuda")
+        ).to("cuda")
+        
         self.pipe.enable_attention_slicing()
         #remove slicing
 
@@ -49,9 +38,10 @@ class Predictor(BasePredictor):
         init_img = Image.open(input_photo_path)
         init_img = init_img.resize((768, 512))
 
-        output = self.pipe(prompt=prompt, image=init_img)
+        output = self.pipe(prompt=prompt, image=init_img, strength=0.75, guidance_scale=7.5).images
         print("saving")
-        output_image_path = f"/tmp/out.png"  # Temporarily save the image
+        output_image_path = "out.png"  # Temporarily save the image
         output[0].save(output_image_path)
 
         return output_image_path
+
