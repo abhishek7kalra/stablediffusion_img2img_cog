@@ -41,7 +41,6 @@ class Predictor(BasePredictor):
         output = self.pipe(prompt=prompt, image=init_img, strength=0.75, guidance_scale=7.5).images
         
         print("saving...")
-        output_path = "output.png" 
     
         with io.BytesIO() as output_buffer:
             output[0].save(output_buffer, format='PNG')
@@ -51,9 +50,7 @@ class Predictor(BasePredictor):
         data_url = "data:image/png;base64," + base64.b64encode(output_bytes).decode()
         
         # Saving the image
-        with open(output_path, 'wb') as output_file:
-            output_file.write(base64.b64decode(data_url.split(",")[1]))
-            print("saved")
+        print("saved")
         
         # Return the data URL as the output prediction
         return data_url
