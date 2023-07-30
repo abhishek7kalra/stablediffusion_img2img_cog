@@ -8,4 +8,4 @@ build:
     - "transformers"
     - "accelerate"
 
-predict: "vangogh2.py:Predictor"
+predict: "predict.py:Predictor"
