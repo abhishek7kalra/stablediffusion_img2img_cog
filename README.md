@@ -17,7 +17,12 @@ The Stable Diffusion method allows you to transform an input photo into various 
 
 ## Try it out on Replicate 🚀
 
-### [Van Gogh-fy](https://replicate.com/abhishek7kalra/vangogh)
+<div style="display: flex; justify-content: center; align-items: center; padding: 10px;">
+    <a href="https://replicate.com/abhishek7kalra/vangogh/">
+        <img src="https://images.yourstory.com/cs/2/96eabe90392211eb93f18319e8c07a74/Imagejtb7-1684960500563.jpg" style="width: 100%; border: 5px solid #ccc;">
+    </a>
+</div>
+<p align="center"><strong>Click the image ⬆️</strong></p>
 
 ## Example:
 
