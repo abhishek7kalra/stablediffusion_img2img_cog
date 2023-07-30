@@ -30,7 +30,7 @@ class Predictor(BasePredictor):
         self,
         input_photo: Path = Input(description="Path to the input photo"),
         prompt: str = Input(description="Style prompt", default="Van Gogh style"),
-    ) -> Path:
+    ) -> List[Path]:
         
         input_photo_path = input_photo
         
@@ -38,20 +38,14 @@ class Predictor(BasePredictor):
         init_img = Image.open(input_photo_path)
         init_img = init_img.resize((512, 512))
 
-        output = self.pipe(prompt=prompt, image=init_img, strength=0.75, guidance_scale=7.5).images
+        output = self.pipe(prompt=prompt, image=init_img, strength=0.75, guidance_scale=7.5)
+        output_paths = []
         
-        print("saving...")
-    
-        with io.BytesIO() as output_buffer:
-            output[0].save(output_buffer, format='PNG')
-            output_bytes = output_buffer.getvalue()
-
-        # Create a data URL from the output bytes
-        data_url = "data:image/png;base64," + base64.b64encode(output_bytes).decode()
+        for i, sample in enumerate(output.images):
+            output_path = f"/tmp/out-{i}.png"
+            sample.save(output_path)
+            output_paths.append(Path(output_path))
         
-        # Saving the image
         print("saved")
         
-        # Return the data URL as the output prediction
-        return data_url
-
+        return output_paths
