@@ -40,7 +40,7 @@ class Predictor(BasePredictor):
 
         output = self.pipe(prompt=prompt, image=init_img, strength=0.75, guidance_scale=7.5).images
         print("saving")
-        output_image_path = "out.png"  # Temporarily save the image
+        output_image_path = "output.png"  # Temporarily save the image
         output[0].save(output_image_path)
 
         return output_image_path
