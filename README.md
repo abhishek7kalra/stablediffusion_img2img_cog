@@ -15,7 +15,7 @@ This is an [Cog packages machine learning models as standard containers.](https:
 
 The Stable Diffusion method allows you to transform an input photo into various artistic styles using a text prompt as guidance. The model utilizes the power of Hugging Face Transformers and NVIDIA CUDA Toolkit to achieve efficient GPU-accelerated image processing.
 
-## Try it out on Replicate 🚀
+## [Try it out on Replicate](https://replicate.com/abhishek7kalra/vangogh/) 🚀
 
 <div style="display: flex; justify-content: center; align-items: center; padding: 10px;">
     <a href="https://replicate.com/abhishek7kalra/vangogh/">
